@@ -2,11 +2,12 @@ package family_tree;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.io.Serializable;
 /**
  * Класс для описания отдельного человека
  */
 
-public class Human {
+public class Human implements Serializable{
 
     private String name;
     private LocalDate dob;
@@ -26,7 +27,7 @@ public class Human {
     * @param placeOfBirth - место рождения
     */
 
-    public Human (String name, Gender gender, LocalDate dob , Human father, Human mother, String placeOfBirth, Human spousa, Human spouse)
+    public Human (String name, Gender gender, LocalDate dob , Human father, Human mother, String placeOfBirth, Human spouse, Human spousa)
     {
         this.name = name;
         this.gender = gender;
@@ -37,6 +38,7 @@ public class Human {
         this.spousa = spousa;
         this.placeOfBirth = placeOfBirth;
         children = new ArrayList<>();
+        
     }
 
 
@@ -49,6 +51,8 @@ public class Human {
         }
         return false;
     }
+
+
  /*
   * getter and setter
   */
@@ -61,6 +65,7 @@ public class Human {
     public List<Human> getChildren(){ return children;  }
     public Human getSpouse()        { return spouse;    }
     public Human getSpousa()        { return spousa;    }
+  
 
     public void setName(String name)                { this.name = name; }
     public void setGender(Gender gender)            { this.gender = gender; }
@@ -86,13 +91,13 @@ public class Human {
         sb.append("Мать : ");                sb.append(getMotherInfo());   sb.append("; ");
         sb.append("Дети : ");    sb.append(getChildrenInfo()); sb.append(". ");
 
-        if(gender == Gender.Male )
+        if(gender == Gender.Female )
         {
-            sb.append("Семейное положение : ");    sb.append(getSpouseInfo()); sb.append(". ");
+            sb.append("Семейное положение : ");    sb.append(getSpousaInfo()); sb.append(". ");
         } 
         else
         {
-            sb.append("Семейное положение : ");    sb.append(getSpousaInfo()); sb.append(". ");
+            sb.append("Семейное положение : ");    sb.append(getSpouseInfo() ); sb.append(". ");
         }
 
         return sb.toString();
@@ -139,10 +144,12 @@ public class Human {
     /*
      * Информация о супругах
      */
+
+
     public String getSpouseInfo() 
     {
         String res = "";
-        if (spousa != null){res += "в браке, жена: " + spousa.getName();}
+        if (spousa != null){res += "супруга " + spousa.getName();}
         else res += "Не женат";
         return res;
     }
@@ -150,7 +157,7 @@ public class Human {
     public String getSpousaInfo() 
     {
         String res = "";
-        if (spouse != null){res += "в браке, муж: " + spouse.getName();}
+        if (spouse != null){res += "супруг " + spouse.getName();}
         else res += "Не жената";
         return res;
     }

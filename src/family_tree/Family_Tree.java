@@ -1,11 +1,12 @@
 package family_tree;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 /* 
  * Класс для описания генеалогического древа
  */
-public class Family_Tree {
+public class Family_Tree implements Serializable {
 
     private List<Human> humanList;
 
@@ -58,10 +59,14 @@ public class Family_Tree {
         info.append("В генеалогическим дереве: ");
         info.append(humanList.size());
         info.append(" объектов. \n");
+        int i =1;
         for (Human human: humanList)
-        {
+        {   
+            info.append(i);
+            info.append(' ');
             info.append(human.getData());
             info.append("\n");
+            i++;
         }
         return info.toString();
     }
