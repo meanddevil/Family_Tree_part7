@@ -1,4 +1,4 @@
-package family_tree;
+package family_tree.Human;
 /**
  * перечесление возможных вариантов пола: ж/м
  */

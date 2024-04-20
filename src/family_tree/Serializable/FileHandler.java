@@ -1,4 +1,4 @@
-package family_tree;
+package family_tree.Serializable;
 
 import java.io.*;
 
@@ -24,15 +24,4 @@ public class FileHandler implements Writable {
             }
         }
   
-    // public boolean save(Serializable serializable, String file){
-    //     ObjectOutputStream objectOutputStream = new ObjectOutputStream( new FileOutputStream(file));
-    //     objectOutputStream.writeObject(serializable);
-    //     objectOutputStream.close();
-    // }
-
-    // public Object read(String file){
-    //     ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
-    //     objectInputStream.close();
-    //     return objectInputStream.readObject();
-    // }
 }

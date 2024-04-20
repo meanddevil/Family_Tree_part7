@@ -1,4 +1,4 @@
-package family_tree;
+package family_tree.Human;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -8,7 +8,6 @@ import java.io.Serializable;
  */
 
 public class Human implements Serializable{
-
     private String name;
     private LocalDate dob;
     private Gender gender;

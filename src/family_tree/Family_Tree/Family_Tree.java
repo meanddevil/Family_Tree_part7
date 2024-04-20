@@ -1,12 +1,19 @@
-package family_tree;
+package family_tree.Family_Tree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import family_tree.Human.Human;
+import family_tree.Human.Comparator.HumanComparatorByDob;
+import family_tree.Human.Comparator.HumanComparatorByName;
+import family_tree.Human.Comparator.HumanComparatorByPlaceOfBirth;
+
+import java.util.Iterator;
 /* 
  * Класс для описания генеалогического древа
  */
-public class Family_Tree implements Serializable {
+public class Family_Tree implements Serializable, Iterable<Human>{
 
     private List<Human> humanList;
 
@@ -63,6 +70,7 @@ public class Family_Tree implements Serializable {
         for (Human human: humanList)
         {   
             info.append(i);
+            info.append('.');
             info.append(' ');
             info.append(human.getData());
             info.append("\n");
@@ -70,4 +78,15 @@ public class Family_Tree implements Serializable {
         }
         return info.toString();
     }
+
+    public void sortByName(){humanList.sort(new HumanComparatorByName());}
+
+    public void sortByDob(){humanList.sort(new HumanComparatorByDob());}
+
+    public void sortByPlaceOfBirth(){humanList.sort(new HumanComparatorByPlaceOfBirth());}
+
+    @Override
+    public Iterator<Human> iterator() {
+        return new Family_TreeIterator(humanList);
+    } 
 }
