@@ -4,25 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import family_tree.Human.Human;
+//import family_tree.Human.Human;
 import family_tree.Human.Comparator.HumanComparatorByDob;
 import family_tree.Human.Comparator.HumanComparatorByName;
 import family_tree.Human.Comparator.HumanComparatorByPlaceOfBirth;
-
 import java.util.Iterator;
 /* 
  * Класс для описания генеалогического древа
  */
-public class Family_Tree implements Serializable, Iterable<Human>{
+public class Family_Tree<E extends Node<E>> implements Serializable, Iterable<E>{
 
-    private List<Human> humanList;
+    private List<E> humanList;
 
     public Family_Tree() 
     {
          this(new ArrayList<>());
     }
 
-    public Family_Tree(List<Human> humanList) 
+    public Family_Tree(List<E> humanList) 
     { 
         this.humanList = humanList; 
     }
@@ -30,7 +29,7 @@ public class Family_Tree implements Serializable, Iterable<Human>{
     /*
      * Добавляет нового члена в древо
      */
-    public boolean add(Human human)
+    public boolean add(E human)
     {
         if (human == null) return false;
         if (!humanList.contains(human))
@@ -49,9 +48,9 @@ public class Family_Tree implements Serializable, Iterable<Human>{
 /*
  * метод позволяющий найти отдельного человека в древе
  */
-    public Human getByName(String name)
+    public E getByName(String name)
     {
-        for (Human human: humanList)
+        for (E human: humanList)
         {
             if (human.getName().equals(name)) return human;
         }
@@ -67,7 +66,7 @@ public class Family_Tree implements Serializable, Iterable<Human>{
         info.append(humanList.size());
         info.append(" объектов. \n");
         int i =1;
-        for (Human human: humanList)
+        for (E human: humanList)
         {   
             info.append(i);
             info.append('.');
@@ -79,14 +78,14 @@ public class Family_Tree implements Serializable, Iterable<Human>{
         return info.toString();
     }
 
-    public void sortByName(){humanList.sort(new HumanComparatorByName());}
+    public void sortByName(){humanList.sort(new HumanComparatorByName<>());}
 
-    public void sortByDob(){humanList.sort(new HumanComparatorByDob());}
+    public void sortByDob(){humanList.sort(new HumanComparatorByDob<>());}
 
-    public void sortByPlaceOfBirth(){humanList.sort(new HumanComparatorByPlaceOfBirth());}
+    public void sortByPlaceOfBirth(){humanList.sort(new HumanComparatorByPlaceOfBirth<>());}
 
     @Override
-    public Iterator<Human> iterator() {
+    public Iterator<E> iterator() {
         return new Family_TreeIterator(humanList);
     } 
 }

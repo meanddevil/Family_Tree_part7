@@ -3,11 +3,14 @@ package family_tree.Human;
 import java.time.LocalDate;
 import java.util.*;
 import java.io.Serializable;
+import family_tree.Family_Tree.*;
+import java.lang.String;
+
 /**
  * Класс для описания отдельного человека
  */
 
-public class Human implements Serializable{
+public class Human implements Serializable, Node<Human>{
     private String name;
     private LocalDate dob;
     private Gender gender;
@@ -34,7 +37,7 @@ public class Human implements Serializable{
         this.father = father;
         this.mother = mother;
         this.spouse = spouse;
-        this.spousa = spousa;
+        this.spousa = spousa; 
         this.placeOfBirth = placeOfBirth;
         children = new ArrayList<>();
         
@@ -89,7 +92,6 @@ public class Human implements Serializable{
         sb.append("Отец : ");                sb.append(getFatherInfo());   sb.append("; ");
         sb.append("Мать : ");                sb.append(getMotherInfo());   sb.append("; ");
         sb.append("Дети : ");    sb.append(getChildrenInfo()); sb.append(". ");
-
         if(gender == Gender.Female )
         {
             sb.append("Семейное положение : ");    sb.append(getSpousaInfo()); sb.append(". ");
@@ -143,8 +145,6 @@ public class Human implements Serializable{
     /*
      * Информация о супругах
      */
-
-
     public String getSpouseInfo() 
     {
         String res = "";

@@ -8,13 +8,14 @@ import family_tree.Human.Human;
 import family_tree.Serializable.FileHandler;
 
 
+
 public class Main {
     public static void main(String[] args) {
         
        FileHandler fileHandler = new FileHandler();
        String file= "src/family_tree/tree.txt";
 
-        Family_Tree family_tree = new Family_Tree();
+       Family_Tree<Human> family_tree = new Family_Tree<>();
        
     
       //family_tree = (Family_Tree) fileHandler.read(file);
