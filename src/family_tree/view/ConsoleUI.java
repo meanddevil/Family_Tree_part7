@@ -70,7 +70,7 @@ public class ConsoleUI<Human> implements View{
         System.out.println("Укажите дату рождения в формате:год.месяц.день");
         String strdob = scanner.nextLine();
         LocalDate dob = LocalDate.parse(strdob, DateTimeFormatter.ofPattern("yyyy.MM.dd"));
-        System.out.println("Укажите отца"); 
+        
 
 //      System.out.println("Введите количество детей: 0/1/...");
 //      String numofchil = scanner.nextLine();
