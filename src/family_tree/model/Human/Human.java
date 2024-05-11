@@ -16,9 +16,9 @@ public class Human implements Serializable, Node<Human>{
     private String name;
     private LocalDate dob;
     private Gender gender;
-    private Human mother,father;
-    private Human spousa, spouse;
-    private List<Human> children;
+    private String mother,father;
+    private String spousa, spouse;
+    private StringBuilder children;
     private String placeOfBirth;
     
 
@@ -32,7 +32,7 @@ public class Human implements Serializable, Node<Human>{
     * @param placeOfBirth - место рождения
     */
 
-    public Human (String name, Gender gender, LocalDate dob , Human father, Human mother, String placeOfBirth, Human spouse, Human spousa)
+    public Human (String name, Gender gender, LocalDate dob , String father, String mother, String placeOfBirth, String spouse, String spousa, StringBuilder children)
     {
         this.name = name;
         this.gender = gender;
@@ -42,29 +42,32 @@ public class Human implements Serializable, Node<Human>{
         this.spouse = spouse;
         this.spousa = spousa; 
         this.placeOfBirth = placeOfBirth;
-        children = new ArrayList<>();
-        
+        this.children = children;
     }
 
 
-    public Human(String name2, Gender gender2, String placeOfBirth2, LocalDate dob2) {
+    public Human(String name2, Gender gender2, String placeOfBirth2, LocalDate dob2, String father, String mother,String spousa2, String spouse2, StringBuilder children) {
         this.name = name2;
         this.gender = gender2;
         this.dob = dob2;
         this.placeOfBirth = placeOfBirth2;
-        
+        this.father = father;
+        this.mother = mother;
+        this.spouse = spouse2;
+        this.spousa = spousa2; 
+        this.children = children;
     }
 
 
-    public boolean addChilde(Human child) 
-    { 
-        if (!children.contains(child))
-        { 
-            children.add(child); 
-            return true;
-        }
-        return false;
-    }
+    // public boolean addChilde(Human child) 
+    // { 
+    //     if (!children.contains(child))
+    //     { 
+    //         children.add(child); 
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
 
  /*
@@ -74,20 +77,20 @@ public class Human implements Serializable, Node<Human>{
     public Gender getGender()       { return gender;    }
     public LocalDate getDateBirth()      { return dob; }
     public String  getPlaceOfBirth()        { return placeOfBirth;  }
-    public Human getFather()        { return father;    }
-    public Human getMother()        { return mother;    }
-    public List<Human> getChildren(){ return children;  }
-    public Human getSpouse()        { return spouse;    }
-    public Human getSpousa()        { return spousa;    }
+    public String  getFather()        { return father;    }
+    public String  getMother()        { return mother;    }
+    public StringBuilder getChildren(){ return children;  }
+    public String  getSpouse()        { return spouse;    }
+    public String  getSpousa()        { return spousa;    }
   
 
     public void setName(String name)                { this.name = name; }
     public void setGender(Gender gender)            { this.gender = gender; }
     public void setDateBirth(LocalDate dob)        { this.dob = dob; }
-    public void setFatherr(Human father) { this.father = father; }
-    public void setMother(Human mother) { this.mother = mother; }
-    public void setSpouse (Human spouse) { this.spouse =  spouse; }
-    public void setSpousa (Human spousa) { this.spousa =  spousa; }
+    public void setFatherr(String  father) { this.father = father; }
+    public void setMother(String  mother) { this.mother = mother; }
+    public void setSpouse (String  spouse) { this.spouse =  spouse; }
+    public void setSpousa (String  spousa) { this.spousa =  spousa; }
     public void setPlaceOfBirth (String placeOfBirth)  { this.placeOfBirth = placeOfBirth; }
 
 
@@ -122,17 +125,17 @@ public class Human implements Serializable, Node<Human>{
     public String getFatherInfo() 
     {
         String result = "";
-        if (father != null) {result += father.getName();}
+        if (father != null) {result += father;}
         else result += "информации нет";
         return result;
     }
 
     public String getMotherInfo() 
     {
-        String res = "";
-        if (mother != null){res += mother.getName();}
-        else res += "информации нет";
-        return res;
+        String result = "";
+        if (mother != null){result += mother;}
+        else result += "информации нет";
+        return result;
     }
 
     /*
@@ -143,12 +146,7 @@ public class Human implements Serializable, Node<Human>{
         StringBuilder res = new StringBuilder();
         if (children != null)
         {
-            res.append(children.get(0).getName());
-            for (int i = 1; i < children.size(); i++) 
-            {
-                res.append(", ");
-                res.append(children.get(i).getName());
-            }
+            res = children;
         }
         else res.append("детей нет");
         return res.toString();
@@ -160,7 +158,7 @@ public class Human implements Serializable, Node<Human>{
     public String getSpouseInfo() 
     {
         String res = "";
-        if (spousa != null){res += "супруга " + spousa.getName();}
+        if (spousa != null){res += "супруга " + spousa;}
         else res += "не женат";
         return res;
     }
@@ -168,7 +166,7 @@ public class Human implements Serializable, Node<Human>{
     public String getSpousaInfo() 
     {
         String res = "";
-        if (spouse != null){res += "супруг " + spouse.getName();}
+        if (spouse != null){res += "супруг " + spouse;}
         else res += "не жената";
         return res;
     }

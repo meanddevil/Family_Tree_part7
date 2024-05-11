@@ -69,8 +69,48 @@ public class ConsoleUI<Human> implements View{
         String placeOfBirth = scanner.nextLine();
         System.out.println("Укажите дату рождения в формате:год.месяц.день");
         String strdob = scanner.nextLine();
-        LocalDate dob = LocalDate.parse(strdob, DateTimeFormatter.ofPattern("yyyy.MM.dd"));
+        LocalDate dob = LocalDate.parse(strdob, DateTimeFormatter.ofPattern("yyyy.MM.dd"));  
+        System.out.println("Укажите имя отца");
+        String father = scanner.nextLine();
+        System.out.println("Укажите имя матери");
+        String mother = scanner.nextLine();
+        System.out.println("Состоит в браке? 0-да,1-нет");
+        String YesNo = scanner.nextLine();
+        String spousa;
+        String spouse;
+        if (YesNo.equals("0")) {
+            spouse = null;
+            spousa = null;
+        } else {
+            if (gender == gender.MALE){
+                System.out.println("Введите имя супруги:");
+                spousa = scanner.nextLine(); 
+                spouse = null;
+            }
+            else{
+                System.out.println("Введите имя супруга:");
+                spouse = scanner.nextLine();
+                spousa = null;
+            }
+        }
+        System.out.println("Введите количество детей: 0/1/...");
+        String NumOfChaild = scanner.nextLine();
+        StringBuilder children = new StringBuilder(); 
+        if (NumOfChaild.equals("0")) {
+            children = null;
+        } else {
+            for (int i = 1; i <= Integer.parseInt(NumOfChaild); i++) { // numofchil в int с помощью Integer.parseInt()
+                System.out.println("Введите имя ребенка:");
+                children.append(scanner.nextLine());
+                children.append(", "); 
+            }
+        }
+
         
+        presenter.addnew(name, gender, placeOfBirth, dob, father, mother, spousa, spouse, children);
+
+
+       
 
 //      System.out.println("Введите количество детей: 0/1/...");
 //      String numofchil = scanner.nextLine();
@@ -84,8 +124,10 @@ public class ConsoleUI<Human> implements View{
 //     }
 // }
     
-        presenter.addnew(name,gender,placeOfBirth,dob);
+       
     }
+
+
 
     private void sortByDob() {
         presenter.sortByDob();

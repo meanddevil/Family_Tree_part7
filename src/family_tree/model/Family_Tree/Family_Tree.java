@@ -38,10 +38,6 @@ public class Family_Tree<E extends Node<E>> implements Serializable, Iterable<E>
         if (!humanList.contains(human))
         {
             humanList.add(human);
-            if (human.getFather() != null) human.getFather().addChilde(human);
-            if (human.getMother() != null) human.getMother().addChilde(human);
-            if (human.getSpousa() != null) human.getSpousa();
-            if (human.getSpouse() != null) human.getSpouse();
             return true;
         }
         else return false;

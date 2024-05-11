@@ -17,8 +17,8 @@ public class Presenter {
         family_tree = new Family_Tree<>();
     }
 
-    public void addnew(String name, Gender gender, String placeOfBirth, LocalDate dob) {
-        family_tree.add(new Human(name,gender,placeOfBirth,dob));
+    public void addnew(String name, Gender gender, String placeOfBirth, LocalDate dob, String father, String mother, String spousa, String spouse, StringBuilder chidren) {
+        family_tree.add(new Human(name,gender,placeOfBirth,dob,father, mother, spousa, spouse, chidren));
         getData();
         }
 
@@ -40,6 +40,10 @@ public class Presenter {
     public void sortByPlaceOfBirth() {
         family_tree.sortByPlaceOfBirth();
         getData(); 
+    }
+
+    public void getByName(String str) {
+        family_tree.getByName(str);
     }
 
 }

@@ -3,13 +3,13 @@ import java.util.List;
 import java.time.LocalDate;
 
 public interface Node<T> {
-    boolean addChilde(T child) ;
-    T getFather();
-    T getMother();
-    T getSpouse();
-    T getSpousa();
+   // boolean addChilde(String child) ;
+    String getFather();
+    String getMother();
+    String getSpouse();
+    String getSpousa();
     String getName();
-    List<T> getChildren();
+    StringBuilder getChildren();
     String getPlaceOfBirth();
     LocalDate getDateBirth();
     String getData();
@@ -18,6 +18,4 @@ public interface Node<T> {
     String getChildrenInfo();
     String getSpousaInfo();
     String getSpouseInfo();
-  
-
 }
