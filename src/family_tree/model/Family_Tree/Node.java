@@ -1,5 +1,8 @@
 package family_tree.model.Family_Tree;
 import java.util.List;
+
+import family_tree.model.Human.DataFormat;
+
 import java.time.LocalDate;
 
 public interface Node<T> {

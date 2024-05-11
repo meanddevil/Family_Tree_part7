@@ -20,7 +20,7 @@ public class Presenter {
     public void addnew(String name, Gender gender, String placeOfBirth, LocalDate dob, String father, String mother, String spousa, String spouse, StringBuilder chidren) {
         family_tree.add(new Human(name,gender,placeOfBirth,dob,father, mother, spousa, spouse, chidren));
         getData();
-        }
+    }
 
     public void getData(){
         String answer = family_tree.getData();

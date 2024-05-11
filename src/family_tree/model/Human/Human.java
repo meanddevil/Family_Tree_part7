@@ -32,20 +32,6 @@ public class Human implements Serializable, Node<Human>{
     * @param placeOfBirth - место рождения
     */
 
-    public Human (String name, Gender gender, LocalDate dob , String father, String mother, String placeOfBirth, String spouse, String spousa, StringBuilder children)
-    {
-        this.name = name;
-        this.gender = gender;
-        this.dob = dob;
-        this.father = father;
-        this.mother = mother;
-        this.spouse = spouse;
-        this.spousa = spousa; 
-        this.placeOfBirth = placeOfBirth;
-        this.children = children;
-    }
-
-
     public Human(String name2, Gender gender2, String placeOfBirth2, LocalDate dob2, String father, String mother,String spousa2, String spouse2, StringBuilder children) {
         this.name = name2;
         this.gender = gender2;
@@ -57,17 +43,6 @@ public class Human implements Serializable, Node<Human>{
         this.spousa = spousa2; 
         this.children = children;
     }
-
-
-    // public boolean addChilde(Human child) 
-    // { 
-    //     if (!children.contains(child))
-    //     { 
-    //         children.add(child); 
-    //         return true;
-    //     }
-    //     return false;
-    // }
 
 
  /*
@@ -93,84 +68,31 @@ public class Human implements Serializable, Node<Human>{
     public void setSpousa (String  spousa) { this.spousa =  spousa; }
     public void setPlaceOfBirth (String placeOfBirth)  { this.placeOfBirth = placeOfBirth; }
 
-
-    /*
-     *  Вывод информации по человеку
-     */
-    public String getData()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Имя: ");         sb.append(name);            sb.append("; ");
-        sb.append("Пол: ");                  sb.append(gender);          sb.append("; ");
-        sb.append("Дата рождения: ");        sb.append(dob);       sb.append("; ");
-        sb.append("Место рождения: ");        sb.append(placeOfBirth);       sb.append("; ");
-        sb.append("Отец : ");                sb.append(getFatherInfo());   sb.append("; ");
-        sb.append("Мать : ");                sb.append(getMotherInfo());   sb.append("; ");
-        sb.append("Дети : ");    sb.append(getChildrenInfo()); sb.append(". ");
-        if(gender == Gender.FEMALE )
-        {
-            sb.append("Семейное положение : ");    sb.append(getSpousaInfo()); sb.append(". ");
-        } 
-        else
-        {
-            sb.append("Семейное положение : ");    sb.append(getSpouseInfo() ); sb.append(". ");
-        }
-
-        return sb.toString();
+    public String getData() {
+        return new DataFormat(this).formatData();
     }
 
-    /*
-     * Информация о родителях
-     */
-    public String getFatherInfo() 
-    {
-        String result = "";
-        if (father != null) {result += father;}
-        else result += "информации нет";
-        return result;
+    public String getMotherInfo(){
+        return getMotherInfo();
+    }
+    public String getFatherInfo(){
+        return getFatherInfo();
     }
 
-    public String getMotherInfo() 
+     public String getSpousaInfo() 
     {
-        String result = "";
-        if (mother != null){result += mother;}
-        else result += "информации нет";
-        return result;
+        return getSpousaInfo();
     }
 
-    /*
-     * Информация о детях
-     */
-    public String getChildrenInfo()
-    {
-        StringBuilder res = new StringBuilder();
-        if (children != null)
-        {
-            res = children;
-        }
-        else res.append("детей нет");
-        return res.toString();
-    }
-
-    /*
-     * Информация о супругах
-     */
     public String getSpouseInfo() 
     {
-        String res = "";
-        if (spousa != null){res += "супруга " + spousa;}
-        else res += "не женат";
-        return res;
+        return getSpouseInfo();
     }
-
-    public String getSpousaInfo() 
+    public String getChildrenInfo() 
     {
-        String res = "";
-        if (spouse != null){res += "супруг " + spouse;}
-        else res += "не жената";
-        return res;
+        return getChildrenInfo();
     }
-
+   
     @Override
     public boolean equals(Object obj) 
     {
