@@ -42,8 +42,8 @@ public class Presenter {
         getData(); 
     }
 
-    public void getByName(String str) {
-        family_tree.getByName(str);
-    }
+    // public void getByName(String str) {
+    //     family_tree.getByName(str);
+    // }
 
 }

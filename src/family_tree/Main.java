@@ -42,6 +42,7 @@ public class Main {
       
     //   family_tree.sortByPlaceOfBirth();
     //   System.out.println(family_tree.getData());
+
     View view = new ConsoleUI();
     view.start();
 

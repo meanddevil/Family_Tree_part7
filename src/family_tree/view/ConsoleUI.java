@@ -2,7 +2,6 @@ package family_tree.view;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import family_tree.model.Human.Gender;
@@ -14,11 +13,13 @@ public class ConsoleUI<Human> implements View{
     private Scanner scanner;
     private Presenter presenter;
     private boolean work;
+    private MainMenu mainMenu;
 
     public ConsoleUI(){
         scanner = new Scanner(System.in);
         presenter = new Presenter(this);
         work = true;
+        mainMenu = new MainMenu(this);
     }
 
 
@@ -26,41 +27,14 @@ public class ConsoleUI<Human> implements View{
     public void start() {
         System.out.println("Добрый день! Выберите действие:");
         while(work){
-            System.out.println("1. Добавить члена");
-            System.out.println("2. Получить список членов семьи");
-            System.out.println("3. Сортировка по алфавиту");
-            System.out.println("4. Сортировка по дате рождения");
-            System.out.println("5. Сортировка по месту рождения ");
-            System.out.println("6. Закончить работу");
-            String choice =scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    addnew();
-                    break;
-
-                case "2":
-                    getData();
-                    break;
-                case "3":
-                    sortByName();
-                    break;
-                case "4":
-                    sortByDob();
-                    break;
-                case "5":
-                    sortByPlaceOfBirth();
-                    break;
-                case "6":
-                    finish();
-                    break;
-                default:
-                    error();
-                    break;
-            }
+            System.out.println(mainMenu.getMenu());
+            String strChoice = scanner.nextLine();
+            int choice = Integer.parseInt(strChoice);
+            mainMenu.execute(choice);
         }
     }
 
-    private void addnew(){
+    public void addnew(){
         System.out.println("Укажите имя");
         String name = scanner.nextLine();
         System.out.println("Укажите пол: Male/Female");
@@ -108,50 +82,33 @@ public class ConsoleUI<Human> implements View{
 
         
         presenter.addnew(name, gender, placeOfBirth, dob, father, mother, spousa, spouse, children);
-
-
-       
-
-//      System.out.println("Введите количество детей: 0/1/...");
-//      String numofchil = scanner.nextLine();
-//         if (numofchil.equals("0")) {
-//             String chidren = null;
-//         } else {
-//                 ArrayList<String> chidren = new ArrayList<>(); 
-//                 for (int i = 1; i <= Integer.parseInt(numofchil); i++) { // numofchil в int с помощью Integer.parseInt()
-//                     System.out.println("Введите имя ребенка:");
-//                     chidren.add(scanner.nextLine()); 
-//     }
-// }
-    
-       
     }
 
 
 
-    private void sortByDob() {
+    public void sortByDob() {
         presenter.sortByDob();
     }
 
-    private void sortByPlaceOfBirth(){
+    public void sortByPlaceOfBirth(){
         presenter.sortByPlaceOfBirth();
     }           
 
-    private void sortByName() {
+    public void sortByName() {
         presenter.sortByName();
     }
 
-    private void getData() {
+    public void getData() {
         presenter.getData();    
     }
 
 
-    private void error() {
+    public void error() {
         System.out.println("Введено неверное значение");
     }
 
 
-    private void finish() {
+    public void finish() {
         System.out.println("Досвидания!");
         work = false;
     }

@@ -1,12 +1,10 @@
 package family_tree.model.Family_Tree;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import family_tree.model.Human.Human;
-//import family_tree.model.Human.Human;
+
 import family_tree.model.Human.Comparator.HumanComparatorByDob;
 import family_tree.model.Human.Comparator.HumanComparatorByName;
 import family_tree.model.Human.Comparator.HumanComparatorByPlaceOfBirth;
@@ -46,14 +44,14 @@ public class Family_Tree<E extends Node<E>> implements Serializable, Iterable<E>
 /*
  * метод позволяющий найти отдельного человека в древе
  */
-    public E getByName(String name)
-    {
-        for (E human: humanList)
-        {
-            if (human.getName().equals(name)) return human;
-        }
-        return null;
-    }
+    // public E getByName(String name)
+    // {
+    //     for (E human: humanList)
+    //     {
+    //         if (human.getName().equals(name)) return human;
+    //     }
+    //     return null;
+    // }
 /*
  * Вывод всех членов древа
  */
@@ -86,8 +84,6 @@ public class Family_Tree<E extends Node<E>> implements Serializable, Iterable<E>
     public Iterator<E> iterator() {
         return new Family_TreeIterator(humanList);
     }
-
-   
 
 
 }
