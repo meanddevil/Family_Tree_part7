@@ -40,9 +40,6 @@ public class Service {
     }
 
 
-
-
-
     public void sortByName(){
         family_Tree.sortByName();
     }
