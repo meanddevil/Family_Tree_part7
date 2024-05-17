@@ -1,49 +1,43 @@
 package family_tree.presenter;
 
 import java.time.LocalDate;
-
-import family_tree.model.Family_Tree.Family_Tree;
 import family_tree.model.Human.Gender;
-import family_tree.model.Human.Human;
-//import family_tree.model.Human.Human;
+import family_tree.model.Service.Service;
+
 import family_tree.view.View;
 
 public class Presenter {
     private View view;
-    private Family_Tree family_tree;
+    private Service service;
 
     public Presenter(View view){
         this.view = view;
-        family_tree = new Family_Tree<>();
+        service = new Service();
     }
 
-    public void addnew(String name, Gender gender, String placeOfBirth, LocalDate dob, String father, String mother, String spousa, String spouse, StringBuilder chidren) {
-        family_tree.add(new Human(name,gender,placeOfBirth,dob,father, mother, spousa, spouse, chidren));
+    public void add(String name, Gender gender, String placeOfBirth, LocalDate dob, String father, String mother, String spousa, String spouse, StringBuilder chidren) {
+        service.add(name,gender,placeOfBirth,dob,father, mother, spousa, spouse, chidren);
         getData();
     }
 
     public void getData(){
-        String answer = family_tree.getData();
+        String answer = service.getData();
         view.printAnswer(answer);
     }
 
     public void sortByName() {
-        family_tree.sortByName();
+        service.sortByName();
         getData();
     }
 
     public void sortByDob() {
-        family_tree.sortByDob();
+        service.sortByDob();
         getData();    
     }
 
     public void sortByPlaceOfBirth() {
-        family_tree.sortByPlaceOfBirth();
+        service.sortByPlaceOfBirth();
         getData(); 
     }
-
-    // public void getByName(String str) {
-    //     family_tree.getByName(str);
-    // }
 
 }

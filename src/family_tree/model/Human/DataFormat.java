@@ -20,9 +20,9 @@ public class DataFormat {
         sb.append("Мать : "); sb.append(getMotherInfo()); sb.append("; ");
         sb.append("Дети : "); sb.append(getChildrenInfo()); sb.append(" ");
         if (human.getGender() == Gender.FEMALE) {
-            sb.append("Семейное положение : "); sb.append(getSpousaInfo()); sb.append(". ");
+            sb.append("Семейное положение: "); sb.append(getSpousaInfo()); sb.append(". ");
         } else {
-            sb.append("Семейное положение : "); sb.append(getSpouseInfo()); sb.append(". ");
+            sb.append("Семейное положение: "); sb.append(getSpouseInfo()); sb.append(". ");
         }
 
         return sb.toString();

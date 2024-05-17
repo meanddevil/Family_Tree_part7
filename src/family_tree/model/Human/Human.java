@@ -102,4 +102,5 @@ public class Human implements Serializable, Node<Human>{
      return human.getName().equals(getName());
     }
    
+   
 }

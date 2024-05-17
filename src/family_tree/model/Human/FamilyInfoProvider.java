@@ -46,7 +46,7 @@ public class FamilyInfoProvider {
         {
             res = human.getChildren();
         }
-        else res.append("детей нет");
+        else res.append("детей нет;");
         return res.toString();
     }
 }

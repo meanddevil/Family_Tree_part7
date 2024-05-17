@@ -10,6 +10,6 @@ public class Addnew extends Command {
 
     @Override
     public void execute(){
-        consoleUI.addnew();
+        consoleUI.add();
     }
 }

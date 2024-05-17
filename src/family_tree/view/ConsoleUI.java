@@ -5,10 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import family_tree.model.Human.Gender;
-import family_tree.model.Human.Human;
 import family_tree.presenter.Presenter;
 
-public class ConsoleUI<Human> implements View{
+public class ConsoleUI implements View{
 
     private Scanner scanner;
     private Presenter presenter;
@@ -34,7 +33,7 @@ public class ConsoleUI<Human> implements View{
         }
     }
 
-    public void addnew(){
+    public void add(){
         System.out.println("Укажите имя");
         String name = scanner.nextLine();
         System.out.println("Укажите пол: Male/Female");
@@ -48,7 +47,7 @@ public class ConsoleUI<Human> implements View{
         String father = scanner.nextLine();
         System.out.println("Укажите имя матери");
         String mother = scanner.nextLine();
-        System.out.println("Состоит в браке? 0-да,1-нет");
+        System.out.println("Состоит в браке? 1-да, 0-нет");
         String YesNo = scanner.nextLine();
         String spousa;
         String spouse;
@@ -81,7 +80,7 @@ public class ConsoleUI<Human> implements View{
         }
 
         
-        presenter.addnew(name, gender, placeOfBirth, dob, father, mother, spousa, spouse, children);
+        presenter.add(name, gender, placeOfBirth, dob, father, mother, spousa, spouse, children);
     }
 
 
